@@ -34,7 +34,7 @@ from mysql.connector import Error
 def criar_e_conectar_banco_dados(nome_do_banco, host, usuario, senha):
     try:
         conexao = mysql.connector.connect(
-            host=host,
+            host=127.0.0.1,  # Substitua 'host' pelo endereço IP ou nome de domínio do seu servidor MySQL
             user=usuario,
             password=senha,
             database=nome_do_banco
@@ -43,6 +43,13 @@ def criar_e_conectar_banco_dados(nome_do_banco, host, usuario, senha):
     except Error as e:
         st.error(f"Erro ao conectar ao banco de dados MySQL: {e}")
         return None
+
+# Exemplo de uso:
+conexao = criar_e_conectar_banco_dados('tentativa', '127.0.0.1', 'brend', '34334220')
+if conexao is not None and conexao.is_connected():
+    st.success("Conectado ao banco de dados criado.")
+else:
+    st.error("Não foi possível conectar ao banco de dados.")
 
 def salvar_cadastro(conexao, nome, email, cpf, telefone, endereco, animal_preferido, razao_adocao, opcoes):
     try:
@@ -114,18 +121,23 @@ def tela_noticias():
     st.title("Notícias sobre Animais Desaparecidos")
     st.write("Aqui você encontra as últimas notícias sobre animais desaparecidos. Nos ajude a encontrá-los!")
 
-    # Exemplo de código para buscar notícias de uma API
+    # Substitua 'https://sua-api-de-noticias.com/api/noticias' pela URL real da API
+    url_da_api = 'https://exame.com/mundo/casal-envia-acidentalmente-gato-de-estimacao-em-pacote-de-devolucao-da-amazon/'
+    
     import requests
     try:
-        resposta = requests.get('URL_DA_API_DE_NOTICIAS')
-        noticias = resposta.json()
-        for noticia in noticias:
-            st.write(noticia['titulo'])
-            st.image(noticia['url_imagem'], caption=noticia['resumo'])
+        resposta = requests.get(url_da_api)
+        if resposta.status_code == 200:
+            noticias = resposta.json()
+            for noticia in noticias:
+                st.write(noticia['titulo'])
+                st.image(noticia['url_imagem'], caption=noticia['resumo'])
+        else:
+            st.error("Falha ao receber dados da API de notícias.")
     except Exception as e:
         st.error(f"Erro ao buscar notícias: {e}")
 
-    st.image('https://marketplace.canva.com/EAFJIG5IVME/1/0/1131w/canva-cartaz-de-cachorro-perdido-beagle-creme-marrom-v4XKJwXHeys.jpg', caption='Cachorro golden perdido',  width=300)
+    st.image('https://marketplace.canva.com/EAFJIG5IVME/1/0/1131w/canva-cartaz-de-cachorro-perdido-beagle-creme-marrom-v4XKJwXHeys.jpg', caption='Cachorro beagle perdido',  width=300)
 
 # Botão para acessar a tela de notícias
 if st.button("Notícias"):
