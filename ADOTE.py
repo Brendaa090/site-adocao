@@ -84,7 +84,7 @@ def tela_noticias():
     st.title("Notícias sobre Animais Desaparecidos")
     st.write("Aqui você encontra as últimas notícias sobre animais desaparecidos. Nos ajude a encontrá-los!")
 
-    st.image('https://marketplace.canva.com/EAFJIG5IVME/1/0/1131w/canva-cartaz-de-cachorro-perdido-beagle-creme-marrom-v4XKJwXHeys.jpg', caption='Cachorro golden perdido')
+    st.image('https://marketplace.canva.com/EAFJIG5IVME/1/0/1131w/canva-cartaz-de-cachorro-perdido-beagle-creme-marrom-v4XKJwXHeys.jpg', caption='Cachorro golden perdido',  width=300)
 
     # Aqui você pode adicionar o código para buscar e exibir as notícias sobre animais desaparecidos
     # Por exemplo, buscar de uma API ou de um banco de dados e exibir os resultados
