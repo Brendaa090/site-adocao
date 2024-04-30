@@ -34,7 +34,7 @@ from mysql.connector import Error
 def criar_e_conectar_banco_dados(nome_do_banco, host, usuario, senha):
     try:
         conexao = mysql.connector.connect(
-            host=0.0.0.0,  # Substitua 'host' pelo endereço IP ou nome de domínio do seu servidor MySQL
+            host='0.0.0.0',  # Substitua 'host' pelo endereço IP ou nome de domínio do seu servidor MySQL
             user=usuario,
             password=senha,
             database=nome_do_banco
