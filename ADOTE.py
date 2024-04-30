@@ -1,5 +1,30 @@
 
 import streamlit as st
+import mysql.connector
+from mysql.connector import Error
+
+def criar_e_conectar_banco_dados(nome_do_banco, host, usuario, senha):
+    try:
+        conexao = mysql.connector.connect(
+            host=host,
+            user=usuario,
+            password=senha
+        )
+        cursor = conexao.cursor()
+        cursor.execute(f"CREATE DATABASE IF NOT EXISTS {nome_do_banco}")
+        conexao.database = nome_do_banco  # Muda para a base de dados criada
+        st.success(f"Base de dados '{nome_do_banco}' criada com sucesso!")
+        return conexao
+    except Error as e:
+        st.error(f"Erro ao conectar ao banco de dados MySQL: {e}")
+        return None
+
+# Substitua os valores de 'host', 'usuario', 'senha' e 'nome_do_banco' pelos seus dados reais
+conexao = criar_e_conectar_banco_dados('nome_do_seu_banco', 'seu_host', 'seu_usuario', 'sua_senha')
+if conexao is not None and conexao.is_connected():
+    st.success("Conectado ao banco de dados criado.")
+else:
+    st.error("Não foi possível conectar ao banco de dados.")
 def carregar_imagem_canto_esquerdo_base64(imagem_base64):
 
     
@@ -93,45 +118,3 @@ def tela_noticias():
 if st.button("Notícias"):
     tela_noticias()
 
-import mysql.connector
-from mysql.connector import Error
-
-def criar_e_conectar_banco_dados(nome_do_banco):
-    try:
-        conexao = mysql.connector.connect(
-            host='seu_host',
-            user='seu_usuario',
-            password='sua_senha'
-        )
-        cursor = conexao.cursor()
-        cursor.execute(f"CREATE DATABASE IF NOT EXISTS {nome_do_banco}")
-        print(f"Base de dados '{nome_do_banco}' criada com sucesso!")
-        conexao.database = nome_do_banco  # Muda para a base de dados criada
-        return conexao
-    except Error as e:
-        print("Erro ao conectar ao banco de dados MySQL", e)
-
-# Substitua os valores de 'seu_host', 'seu_usuario', 'sua_senha' e 'nome_do_seu_banco' pelos seus dados reais
-conexao = criar_e_conectar_banco_dados('nome_do_seu_banco')
-if conexao is not None and conexao.is_connected():
-    print("Conectado ao banco de dados criado.")
-    # Aqui você pode chamar outras funções que dependam da conexão, como buscar_noticias_animais_desaparecidos(conexao)
-
-import mysql.connector
-from mysql.connector import Error
-
-def criar_e_conectar_banco_dados(nome_do_banco, host, usuario, senha):
-    try:
-        conexao = mysql.connector.connect(
-            host=host,
-            user=usuario,
-            password=senha
-        )
-        cursor = conexao.cursor()
-        cursor.execute(f"CREATE DATABASE IF NOT EXISTS {nome_do_banco}")
-        conexao.database = nome_do_banco  # Muda para a base de dados criada
-        print(f"Base de dados '{nome_do_banco}' criada com sucesso!")
-        return conexao
-    except Error as e:
-        print("Erro ao conectar ao banco de dados MySQL", e)
-        return None
