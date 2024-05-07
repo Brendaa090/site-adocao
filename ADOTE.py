@@ -35,7 +35,12 @@ def salvar_cadastro(conexao, nome, email, cpf, telefone, endereco, animal_prefer
     """
     cursor.execute(query, (nome, email, cpf, telefone, endereco, animal_preferido, razao_adocao, str(opcoes)))
     conexao.commit()
-
+    
+def tela_inicial():
+    st.title("Bem-vindo ao Sistema de Adoção de Animais")
+    st.write("Aqui você pode adotar seu novo melhor amigo!")
+    if st.button("Quero Adotar"):
+        tela_cadastro()
 # Função para a tela de cadastro
 def tela_cadastro():
     conexao = sqlite3.connect('caminho_para_seu_banco_de_dados.db')
