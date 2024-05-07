@@ -83,4 +83,4 @@ def tela_quero_ajudar():
 def tela_noticias():
     st.title("Notícias sobre Animais Desaparecidos")
     st.write("Aqui você encontra as últimas notícias sobre animais desaparecidos. Nos ajude a encontrá-los!")
-    url_da_api = 'https://exame.com/mundo/cas
+    url_da_api = 
