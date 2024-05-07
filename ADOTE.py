@@ -1,5 +1,4 @@
-
-
+import streamlit as st
 import sqlite3
 import requests
 
@@ -40,7 +39,6 @@ def tela_cadastro():
     
     with st.form("form_cadastro"):
         nome = st.text_input("Nome Completo")
-        nasc = st.text_input("Data de nascimento")
         email = st.text_input("Email")
         cpf = st.text_input("CPF")
         telefone = st.text_input("Telefone")
@@ -60,13 +58,6 @@ def tela_cadastro():
             salvar_cadastro(conexao, nome, email, cpf, telefone, endereco, animal_preferido, razao_adocao, opcoes)
     conexao.close()
 
-# Função para a tela inicial
-def tela_inicial():
-    st.title("Bem-vindo ao Sistema de Adoção de Animais")
-    st.write("Aqui você pode adotar seu novo melhor amigo!")
-    if st.button("Quero Adotar"):
-        tela_cadastro()
-
 # Função para a tela "Sobre Nós"
 def tela_sobre_nos():
     st.title("Sobre Nós")
@@ -84,21 +75,21 @@ def tela_quero_ajudar():
 def tela_noticias():
     st.title("Notícias sobre Animais Desaparecidos")
     st.write("Aqui você encontra as últimas notícias sobre animais desaparecidos. Nos ajude a encontrá-los!")
-    url_da_api = 'https://oglobo.globo.com/brasil/noticia/2024/05/05/busca-por-pet-perdidos-tutores-recorrem-a-detetives-particulares-drones-e-cameras-com-sensor-de-calor.ghtml'
+    url_da_api = 'https://exame.com/mundo/casal-envia-acidentalmente-gato-de-estimacao-em-pacote-de-devolucao-da-amazon/'
 
-    try:
+try:
         resposta = requests.get(url_da_api)
         if resposta.status_code == 200:
             noticias = resposta.json()
             for noticia in noticias:
                 st.write(noticia['titulo'])
                 st.image(noticia['url_imagem'], caption=noticia['resumo'])
-        else:
-            st.error("Falha ao receber dados da API de notícias.")
-    except Exception as e:
-        st.error(f"Erro ao buscar notícias: {e}")
+else:
+        st.error("Falha ao receber dados da API de notícias.")
+except Exception as e:
+    st.error(f"Erro ao buscar notícias: {e}")
 
-    st.image('https://marketplace.canva.com/EAFJIG5IVME/1/0/1131w/canva-cartaz-de-cachorro-perdido-beagle-creme-marrom-v4XKJwXHeys.jpg', caption='Cachorro beagle perdido', width=300)
+st.image('https://marketplace.canva.com/EAFJIG5IVME/1/0/1131w/canva-cartaz-de-cachorro-perdido-beagle-creme-marrom-v4XKJwXHeys.jpg', caption='Cachorro beagle perdido', width=300)
 
 # Adicionando botões para navegação entre as telas
 def main():
