@@ -36,6 +36,33 @@ def tela_inicial():
         tela_cadastro()
 # Função para a tela de cadastro
 
+def criar_tabela(conexao):
+    cursor = conexao.cursor()
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS cadastros (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            nome TEXT,
+            email TEXT,
+            cpf TEXT,
+            telefone TEXT,
+            endereco TEXT,
+            animal_preferido TEXT,
+            razao_adocao TEXT,
+            opcoes TEXT
+        )
+    """)
+    conexao.commit()
+
+def salvar_cadastro(conexao, nome, email, cpf, telefone, endereco, animal_preferido, razao_adocao, opcoes):
+    cursor = conexao.cursor()
+    opcoes_json = json.dumps(opcoes)  # Converte a lista de opções para JSON
+    query = """
+    INSERT INTO cadastros (nome, email, cpf, telefone, endereco, animal_preferido, razao_adocao, opcoes)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    """
+    cursor.execute(query, (nome, email, cpf, telefone, endereco, animal_preferido, razao_adocao, opcoes_json))
+    conexao.commit()
+
 def tela_cadastro():
     conexao = sqlite3.connect('caminho_para_seu_banco_de_dados.db')
     criar_tabela(conexao)  # Garante que a tabela exista
@@ -59,15 +86,6 @@ def tela_cadastro():
             salvar_cadastro(conexao, nome, email, cpf, telefone, endereco, animal_preferido, razao_adocao, opcoes)
     conexao.close()
 
-# Outras funções...
-  def salvar_cadastro(conexao, nome, email, cpf, telefone, endereco, animal_preferido, razao_adocao, opcoes):
-    cursor = conexao.cursor()
-    query = """
-    INSERT INTO cadastros (nome, email, cpf, telefone, endereco, animal_preferido, razao_adocao, opcoes)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-    """
-    cursor.execute(query, (nome, email, cpf, telefone, endereco, animal_preferido, razao_adocao, str(opcoes)))
-    conexao.commit()
 # Função para a tela "Sobre Nós"
 def tela_sobre_nos():
     st.title("Sobre Nós")
