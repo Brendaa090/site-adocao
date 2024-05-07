@@ -9,7 +9,7 @@ def carregar_imagem_canto_esquerdo_base64(imagem_base64):
     .img-container {{
         position: fixed;
         top: 0;
-        left: 0;
+        right: 0;
     }}
     .img-container img {{
         max-height: 400px;
