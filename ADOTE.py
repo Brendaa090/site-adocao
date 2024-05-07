@@ -1,6 +1,7 @@
 import streamlit as st
 import sqlite3
 import requests
+import json
 
 # Função para carregar e exibir uma imagem no canto esquerdo da tela
 def carregar_imagem_canto_esquerdo_base64(imagem_base64):
@@ -34,10 +35,11 @@ def tela_inicial():
     if st.button("Quero Adotar"):
         tela_cadastro()
 # Função para a tela de cadastro
+
 def tela_cadastro():
     conexao = sqlite3.connect('caminho_para_seu_banco_de_dados.db')
+    criar_tabela(conexao)  # Garante que a tabela exista
     st.title("Cadastro para Adoção")
-    
     with st.form("form_cadastro"):
         nome = st.text_input("Nome Completo")
         email = st.text_input("Email")
@@ -52,13 +54,12 @@ def tela_cadastro():
             st.checkbox('Quero receber dicas de cuidados com meu pet'),
             st.checkbox('Marque esta caixa')
         ]
-        
         enviado = st.form_submit_button("Enviar Cadastro")
-        
         if enviado:
             salvar_cadastro(conexao, nome, email, cpf, telefone, endereco, animal_preferido, razao_adocao, opcoes)
     conexao.close()
-    
+
+# Outras funções...
   def salvar_cadastro(conexao, nome, email, cpf, telefone, endereco, animal_preferido, razao_adocao, opcoes):
     cursor = conexao.cursor()
     query = """
