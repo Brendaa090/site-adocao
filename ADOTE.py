@@ -1,5 +1,6 @@
 import streamlit as st
 import sqlite3
+import requests
 
 # Função para carregar e exibir uma imagem no canto esquerdo da tela
 def carregar_imagem_canto_esquerdo_base64(imagem_base64):
@@ -65,4 +66,21 @@ def tela_inicial():
     if st.button("Quero Adotar"):
         tela_cadastro()
 
-tela_inicial()
+# Função para a tela "Sobre Nós"
+def tela_sobre_nos():
+    st.title("Sobre Nós")
+    st.write("Somos uma organização comprometida com o bem-estar animal. Nosso objetivo é encontrar lares amorosos para animais abandonados ou em situação de risco. Acreditamos que cada animal merece uma segunda chance e trabalhamos incansavelmente para tornar isso possível.")
+    carregar_imagem_canto_esquerdo_base64("sua_string_base64_aqui")
+
+# Função para a tela "Quero Ajudar"
+def tela_quero_ajudar():
+    st.title("Quero Ajudar")
+    st.write("Se você quer ajudar, entre em contato conosco e faça uma doação. Você pode fazer uma doação de qualquer valor, desde que você acredite em nossa causa.")
+    st.write("Entre em contato conosco através do email: contato@adote.com.br")
+    st.write("Ou ligue para: 11 99999-9999")
+
+# Função para a tela "Notícias"
+def tela_noticias():
+    st.title("Notícias sobre Animais Desaparecidos")
+    st.write("Aqui você encontra as últimas notícias sobre animais desaparecidos. Nos ajude a encontrá-los!")
+    url_da_api = 'https://exame.com/mundo/cas
