@@ -122,8 +122,7 @@ def tela_noticias():
 
     
 video_file = (r"C:\Users\Brend\Downloads\campanha.mp4")
-
-    st.video(video_file)
+st.video(video_file)
 # Adicionando botões para navegação entre as telas
 def main():
     st.sidebar.title("Navegação")
