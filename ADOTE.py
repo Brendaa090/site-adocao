@@ -118,11 +118,12 @@ def tela_noticias():
     except Exception as e:
         st.error(f"Erro ao buscar notícias: {e}")
 
-        st.image('https://marketplace.canva.com/EAFJIG5IVME/1/0/1131w/canva-cartaz-de-cachorro-perdido-beagle-creme-marrom-v4XKJwXHeys.jpg', caption='Cachorro beagle perdido', width=300)
-    
-    video_file = '"C:\Users\Brend\Downloads\campanha.mp4"'
+    st.image('https://marketplace.canva.com/EAFJIG5IVME/1/0/1131w/canva-cartaz-de-cachorro-perdido-beagle-creme-marrom-v4XKJwXHeys.jpg', caption='Cachorro beagle perdido', width=300)
 
-        st.video(video_file)
+    
+video_file = '"C:\Users\Brend\Downloads\campanha.mp4"'
+
+    st.video(video_file)
 # Adicionando botões para navegação entre as telas
 def main():
     st.sidebar.title("Navegação")
