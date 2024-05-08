@@ -121,7 +121,7 @@ def tela_noticias():
     st.image('https://marketplace.canva.com/EAFJIG5IVME/1/0/1131w/canva-cartaz-de-cachorro-perdido-beagle-creme-marrom-v4XKJwXHeys.jpg', caption='Cachorro beagle perdido', width=300)
 
     
-video_file = '"C:\Users\Brend\Downloads\campanha.mp4"'
+video_file = (r"C:\Users\Brend\Downloads\campanha.mp4")
 
     st.video(video_file)
 # Adicionando botões para navegação entre as telas
