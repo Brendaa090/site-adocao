@@ -107,17 +107,32 @@ def tela_noticias():
     url_da_api = 'https://exame.com/mundo/casal-envia-acidentalmente-gato-de-estimacao-em-pacote-de-devolucao-da-amazon/'
 
     try:
-        resposta = requests.get(url_da_api)
-        if resposta.status_code == 200:
-            noticias = resposta.json()
-            for noticia in noticias:
-                st.write(noticia['titulo'])
-                st.image(noticia['url_imagem'], caption=noticia['resumo'])
-        else:
-            st.error("Falha ao receber dados da API de notícias.")
-  
+    resposta = requests.get(url_da_api)
+    if resposta.status_code == 200:
+        noticias = resposta.json()
+        for noticia in noticias:
+            st.write(noticia['titulo'])
+            st.image(noticia['url_imagem'], caption=noticia['resumo'])
+    else:
+        st.error("Falha ao receber dados da API de notícias.")
+except Exception as e:
+    st.error(f"Erro ao buscar notícias: {e}")
 
-    st.image('https://marketplace.canva.com/EAFJIG5IVME/1/0/1131w/canva-cartaz-de-cachorro-perdido-beagle-creme-marrom-v4XKJwXHeys.jpg', caption='Cachorro beagle perdido', width=300)
+st.image('https://marketplace.canva.com/EAFJIG5IVME/1/0/1131w/canva-cartaz-de-cachorro-perdido-beagle-creme-marrom-v4XKJwXHeys.jpg', caption='Cachorro beagle perdido', width=300)
+try:
+    resposta = requests.get(url_da_api)
+    if resposta.status_code == 200:
+        noticias = resposta.json()
+        for noticia in noticias:
+            st.write(noticia['titulo'])
+            st.image(noticia['url_imagem'], caption=noticia['resumo'])
+    else:
+        st.error("Falha ao receber dados da API de notícias.")
+except Exception as e:
+    st.error(f"Erro ao buscar notícias: {e}")
+
+st.image('https://marketplace.canva.com/EAFJIG5IVME/1/0/1131w/canva-cartaz-de-cachorro-perdido-beagle-creme-marrom-v4XKJwXHeys.jpg', caption='Cachorro beagle perdido', width=300)
+
 
    
 
