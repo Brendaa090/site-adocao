@@ -117,7 +117,7 @@ def tela_noticias():
             st.error("Falha ao receber dados da API de notícias.")
   
 
-    st.image('https://marketplace.canva.com/EAFJIG5IVME/1/0/1131w/canva-cartaz-de-cachorro-perdido-beagle-creme-marrom-v4XKJwXHeys.jpg', caption='Cachorro beagle perdido', width=300)
+            st.image('https://marketplace.canva.com/EAFJIG5IVME/1/0/1131w/canva-cartaz-de-cachorro-perdido-beagle-creme-marrom-v4XKJwXHeys.jpg', caption='Cachorro beagle perdido', width=300)
 
    
 
