@@ -101,42 +101,26 @@ def tela_quero_ajudar():
     st.write("Ou ligue para: 11 99999-9999")
 
 # Função para a tela "Notícias"
+
 def tela_noticias():
     st.title("Notícias sobre Animais Desaparecidos")
     st.write("Aqui você encontra as últimas notícias sobre animais desaparecidos. Nos ajude a encontrá-los!")
     url_da_api = 'https://exame.com/mundo/casal-envia-acidentalmente-gato-de-estimacao-em-pacote-de-devolucao-da-amazon/'
 
     try:
-    resposta = requests.get(url_da_api)
-    if resposta.status_code == 200:
-        noticias = resposta.json()
-        for noticia in noticias:
-            st.write(noticia['titulo'])
-            st.image(noticia['url_imagem'], caption=noticia['resumo'])
-    else:
-        st.error("Falha ao receber dados da API de notícias.")
-except Exception as e:
-    st.error(f"Erro ao buscar notícias: {e}")
+        resposta = requests.get(url_da_api)
+        if resposta.status_code == 200:
+            noticias = resposta.json()
+            for noticia in noticias:
+                st.write(noticia['titulo'])
+                st.image(noticia['url_imagem'], caption=noticia['resumo'])
+        else:
+            st.error("Falha ao receber dados da API de notícias.")
+    except Exception as e:
+        st.error(f"Erro ao buscar notícias: {e}")
 
-st.image('https://marketplace.canva.com/EAFJIG5IVME/1/0/1131w/canva-cartaz-de-cachorro-perdido-beagle-creme-marrom-v4XKJwXHeys.jpg', caption='Cachorro beagle perdido', width=300)
-try:
-    resposta = requests.get(url_da_api)
-    if resposta.status_code == 200:
-        noticias = resposta.json()
-        for noticia in noticias:
-            st.write(noticia['titulo'])
-            st.image(noticia['url_imagem'], caption=noticia['resumo'])
-    else:
-        st.error("Falha ao receber dados da API de notícias.")
-except Exception as e:
-    st.error(f"Erro ao buscar notícias: {e}")
+    st.image('https://marketplace.canva.com/EAFJIG5IVME/1/0/1131w/canva-cartaz-de-cachorro-perdido-beagle-creme-marrom-v4XKJwXHeys.jpg', caption='Cachorro beagle perdido', width=300)
 
-st.image('https://marketplace.canva.com/EAFJIG5IVME/1/0/1131w/canva-cartaz-de-cachorro-perdido-beagle-creme-marrom-v4XKJwXHeys.jpg', caption='Cachorro beagle perdido', width=300)
-
-
-   
-
-# Adicionando botões para navegação entre as telas
 def main():
     st.sidebar.title("Navegação")
     opcao = st.sidebar.selectbox("Escolha uma opção", ["Início", "Sobre Nós", "Quero Ajudar", "Notícias", "Cadastro para Adoção"])
@@ -154,3 +138,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
