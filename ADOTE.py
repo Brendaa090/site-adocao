@@ -105,18 +105,7 @@ def tela_quero_ajudar():
 def tela_noticias():
     st.title("Notícias sobre Animais Desaparecidos")
     st.write("Aqui você encontra as últimas notícias sobre animais desaparecidos. Nos ajude a encontrá-los!")
-   
-
-    try:
-        resposta = requests.get(url_da_api)
-        if resposta.status_code == 200:
-            noticias = resposta.json()
-            for noticia in noticias:
-                st.write(noticia['titulo'])
-                st.image(noticia['url_imagem'], caption=noticia['resumo'])
- 
-
-                st.image('https://marketplace.canva.com/EAFJIG5IVME/1/0/1131w/canva-cartaz-de-cachorro-perdido-beagle-creme-marrom-v4XKJwXHeys.jpg', caption='Cachorro beagle perdido', width=300)
+    st.image('https://marketplace.canva.com/EAFJIG5IVME/1/0/1131w/canva-cartaz-de-cachorro-perdido-beagle-creme-marrom-v4XKJwXHeys.jpg', caption='Cachorro beagle perdido', width=300)
 
 def main():
     st.sidebar.title("Navegação")
