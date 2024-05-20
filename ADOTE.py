@@ -105,7 +105,7 @@ def tela_quero_ajudar():
 def tela_noticias():
     st.title("Notícias sobre Animais Desaparecidos")
     st.write("Aqui você encontra as últimas notícias sobre animais desaparecidos. Nos ajude a encontrá-los!")
-    url_da_api = 'https://exame.com/mundo/casal-envia-acidentalmente-gato-de-estimacao-em-pacote-de-devolucao-da-amazon/'
+   
 
     try:
         resposta = requests.get(url_da_api)
@@ -114,10 +114,7 @@ def tela_noticias():
             for noticia in noticias:
                 st.write(noticia['titulo'])
                 st.image(noticia['url_imagem'], caption=noticia['resumo'])
-        else:
-            st.error("Falha ao receber dados da API de notícias.")
-    except Exception as e:
-        st.error(f"Erro ao buscar notícias: {e}")
+ 
 
     st.image('https://marketplace.canva.com/EAFJIG5IVME/1/0/1131w/canva-cartaz-de-cachorro-perdido-beagle-creme-marrom-v4XKJwXHeys.jpg', caption='Cachorro beagle perdido', width=300)
 
