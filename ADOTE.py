@@ -116,7 +116,7 @@ def tela_noticias():
                 st.image(noticia['url_imagem'], caption=noticia['resumo'])
  
 
-    st.image('https://marketplace.canva.com/EAFJIG5IVME/1/0/1131w/canva-cartaz-de-cachorro-perdido-beagle-creme-marrom-v4XKJwXHeys.jpg', caption='Cachorro beagle perdido', width=300)
+st.image('https://marketplace.canva.com/EAFJIG5IVME/1/0/1131w/canva-cartaz-de-cachorro-perdido-beagle-creme-marrom-v4XKJwXHeys.jpg', caption='Cachorro beagle perdido', width=300)
 
 def main():
     st.sidebar.title("Navegação")
